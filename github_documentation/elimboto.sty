@@ -1,0 +1,50 @@
+% Jan Groenewald jan@aims.ac.za
+% Don't change anything here
+\typeout{StylePage [TSSFL] <18/04/2012>}
+
+% Do not show "Chapter" each time
+\def\@chapapp{}
+% define chapter heading layout
+\def\@makechapterhead#1{{\parindent0pt\raggedright\huge\bf\@chapapp{}\thechapter.\hskip15pt #1 \vskip15pt}}
+% define chapter heading layout (when not numbered) make**S**chapterhead
+\def\@makeschapterhead#1{{\parindent0pt\raggedright\huge\bf\@chapapp{}#1 \vskip15pt}}
+\def\@makesectionhead#1{{\parindent0pt\raggedright\large\bf\@chapapp{}\thechapter\hskip15pt #1 \vskip15pt}}
+
+% appendix command changes chapter headings to say "Appendix"
+\def\appendix{\setcounter{chapter}{0}\setcounter{section}{0}\def\thechapter{\Alph{chapter}}\def\@chapapp{Appendix }}
+\def\endappendix{\setcounter{chapter}{0}\setcounter{section}{0}\def\thechapter{\Alph{chapter}}\def\@chapapp{}}
+%\def\reference{\setcounter{chapter}{0}\setcounter{section}{0}\def\thechapter{References}}\def\@chapapp{Reference }
+% Running headers
+%\headheight12pt
+\def\ps@myheadings{\let\@mkboth\markboth\def\@oddfoot{}\def\@evenfoot{}
+
+\def\@evenhead{%\hspace{2pt}
+\underline{\strut\hbox to\hsize{ Page \thepage\hss\leftmark}}}
+
+\def\@oddhead{%\hspace{2pt}
+\underline{\strut\hbox to\hsize{ \rightmark\hss Page \thepage}}}
+
+%Testings start here
+\def\@oddfoot{%\hspace{2pt}
+\underline{\strut\hbox to\hsize{ \rightmark\hss }}}
+
+%End here
+
+\def\chaptermark##1{\markboth{{Chapter \@chapapp\thechapter.\ ##1}}{}}
+\def\sectionmark##1{\markright { \ifnum \c@secnumdepth >\z@ Section \thesection.\ ##1\fi }}}
+
+% an emphasized box (a border, really)
+\long\def\embox#1{{%
+   \leavevmode\vskip-2mm\noindent
+   \hbox to\textwidth{\hfill
+      \fboxsep=5mm
+      \fbox{
+                        \hsize=\textwidth
+                        \advance\hsize -2cm\noindent
+                        \begin{minipage}{\hsize}
+                \em #1
+                        \end{minipage}
+         \noindent}%
+      \hfill}%
+   \vskip1mm}\noindent}
+
