@@ -2,3 +2,102 @@
 %\chaptermark{HI IM Development: MeerKAT}
 We will develop capabilities to simulate sky signals for HI, foreground from our Milk Way Galaxy and emissions from extragalactic point sources. After adding noise together with signal components of the sky, 
 thereafter we will apply foreground removal techniques, preferably, PCA and GNILIC to strip out contaminations and obtain the original HI sky signals.
+
+\section{Noise}
+\begin{enumerate}
+ \item Noise for each pixel, 
+ \begin{equation}
+  \sigma = \frac{T_{\rm sys} + T_{\rm sky}}{\sqrt{\triangle t \triangle \nu}},
+ \end{equation}
+where $T_{\rm sys}$ is the system temperature, $T_{\rm sky}$ is the sky temperature, $\triangle t$ is the integration time for each pixel and $\triangle \nu$ is the frequency bandwidth (measure of resolution).
+\item We pixelize the survey area, using the beam size, $\theta_{\rm FWHM}$ as a pixel size. So, for 21-cm, a pixel size is given by
+\begin{equation}
+ \theta_{\rm FWHM} = \frac{\lambda_{\nu}}{D}. \ \text{In other, the usual formula is} \ \theta_{\rm FWHM} = \left(\frac{1.22 \lambda_{\nu}}{D} \right).
+\end{equation}
+Here $\lambda_{\nu}$ is the wavelength corresponding to a particular frequency $\nu$, and $D$ is the telescope dish diameter.
+
+\item For each frequency, we will have $N$ number of pixels given by
+\begin{equation}
+ N_{\rm pix} = \frac{\Omega_{\rm sur}}{\theta_{\rm FWHM}^{2}},
+\end{equation}
+where $\Omega_{\rm sur}$ is the survey area in square degrees.
+
+\item Integration time for each pixel, $\triangle t$ is then given by
+\begin{equation}
+ \triangle t = \frac{T_{\rm Tot}}{N_{\rm pix}},
+\end{equation}
+where $T_{\rm Tot}$ is the total integration time.
+\item This useful relation 
+\begin{equation}
+ \theta_{\rm FWHM}(\nu) = \theta_{\rm FWHM}(\nu_{0}) \frac{\nu_{0}}{\nu}
+\end{equation}
+comes from (2) above. The measure of $\theta_{\rm FWHM}(\nu)$ is usually in arcminutes (arcmin).
+\item We will use the Python Healpy to generate the noise maps, taking into consideration the Nsides.
+\end{enumerate}
+\footnote{Key words: Mask, noise, resolution, sensitivity}
+
+\section{Masking Maps, Dec \& RA}
+In regard to Figure \ref{xyz}, the angles $\theta$ and $\phi$ are related to the coordinates $x, \ y$ and $z$ by equations
+
+%Check the use of cases: https://tex.stackexchange.com/questions/240868/how-to-write-cases-with-latex
+\begin{equation}
+ \begin{cases}
+  x  =  r{\rm cos}\phi{\rm sin}\theta\\
+  y  =  r{\rm sin}\phi{\rm sin}\theta\\
+  z  =  r{\rm cos}\theta
+ \end{cases}
+\end{equation}
+
+RA $\sim$ $\phi \in [0, 2\pi]$, Dec $\sim$ $[-\pi/2 , \pi/2]$, and $\theta \in [0, \pi]$ is calculated from the equation
+\begin{equation}
+ \theta = \frac{\pi}{2} - {\rm Dec \ angle}.
+\end{equation}
+
+For example, the BINGO declination of $[-50^{\circ}, -40^{\circ}]$ $\implies$ $\theta \in [130^{\circ}, 140^{\circ}]$. The FAST maximum declination range is $[-14^{\circ}, 65^{\circ}]$.
+
+\begin{itemize}
+ \item The angle $\theta$ is defined in range  $[0, \pi]$ and therefore it cannot directly represent declination $[-\pi/2,  \pi/2]$.
+\item $\theta$ is the polar angle or colatitude on the sphere, ranging from $0$ at the North Pole to $\pi$ at the South Pole. 
+\item $\phi$ The azimuthal angle on the sphere, $\phi\in[0,2\pi[$.
+\end{itemize}
+
+ 
+\begin{figure}
+\centering
+\begin{tikzpicture}
+ %loops
+ \draw[ ->, black] (0,0) -- (3.5,0) node [anchor=west] {\color{black}$y$};
+ \draw[ ->, black] (0,0) -- (0, 3.5) node [anchor=east] {\color{black}$z$};
+ \draw[ ->, black] (0,0) -- (-2.25,-2.25)node[anchor=north west] {\color{black}$x$};
+ \draw[ ->, red] (0,0) -- (2.5,2.5) node[anchor=north west] {\color{black}$(r, \theta, \phi)$};
+ \draw[dashed, -, blue] (0,2.5) -- (2.5,2.5);   % node[anchor=north west] {\color{black}$x'$};
+ \draw[red, -, dashed] (0,0) -- (2.5,-1.0);
+ \draw[dashed, -, red] (2.5, 2.5) -- (2.5,-1.0);
+ %90 degrees
+ \draw[-, black] (0.2, -0.07) arc (0:90:0.2); %\draw[red] (0,0) arc (\start:\stop:3);
+ \node (A) at (0.55, 0.07) {$90^{\circ}$};
+%\phi
+\draw[-, blue] (0.2, 0.2) arc (0:105:0.15);
+\node (C) at (0.2, 0.5) {$\theta$};
+%theta
+\draw[-,magenta] (0.2, -0.08) arc (0:-150:0.21);
+\node (B) at (0.25, -0.4) {$\phi$};
+%Position r
+\node (R) at (1.8, 1.95) [anchor=north east] {$r$};
+%Right angle
+\draw[-, black] (2.3, -0.7) -- (2.5, -0.8);
+\draw[-, black] (2.3, -0.7) -- (2.3, -0.9);
+%\draw[-, black] (2.3, -0.8) -- (2.5, -0.8) -- (2.3, -0.8); -- (2.3, -1.0) -- (2.5, -1.0);
+
+%\newcommand{\pythagwidth}{3cm}
+%\newcommand{\pythagheight}{2cm}
+%\coordinate [label={below right:$F$}] (F) at (2.5,-1.0);
+%\draw [very thick] (F) -- (C) -- (B) -- (F);
+%\newcommand{\ranglesize}{0.3cm}
+%\draw (F) -- ++ (0, \ranglesize) -- ++ (-\ranglesize, 0) -- ++ (0, -\ranglesize);
+%\path let \p1 = (A) in node  at (\x1,3) {B};
+ %\draw[thick, ->, red] (0,0) -- (0, -4.5) node[anchor=south east] {\color{black}$y'$};
+\end{tikzpicture}
+\caption{3-D representation of cartesian coordinates } 
+\label{xyz}
+\end{figure}

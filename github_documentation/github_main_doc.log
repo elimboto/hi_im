@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.24)  13 NOV 2017 17:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.24)  16 NOV 2017 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1727,12 +1727,13 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 \openout4 = `github_main_doc.upa'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./github_main_doc.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./github_main_doc.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 4.
+)
 \tf@toc=\write7
 \openout7 = `github_main_doc.toc'.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 133.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 133.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1743,16 +1744,23 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ]
 (./github_doc.tex
  1.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
- been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.145 \newpage
-               \bibliographystyle{plain} %plain, babplain, alpha, amsalpha, ...
-[1
+l.39 \section
+             {Masking Maps, Dec \& RA} [1
 
 
 ]
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 59.
+
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 59.
+) [2]
 
 Package caption Warning: Unused \captionsetup[table] on input line 59.
 See the caption package documentation for explanation.
@@ -1763,26 +1771,32 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 153.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 153.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 153.
 Package rerunfilecheck Info: File `github_main_doc.out' has not changed.
-(rerunfilecheck)             Checksum: 5C79378B5437DBBD2CD06F924EE0812B;51.
+(rerunfilecheck)             Checksum: 3129CE212A152922519A3E5A9BCC0297;171.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
  ) 
 Here is how much of TeX's memory you used:
- 40785 strings out of 495028
- 860542 string characters out of 6181497
- 1132776 words of memory out of 5000000
- 43074 multiletter control sequences out of 15000+600000
- 49144 words of font info for 65 fonts, out of 8000000 for 9000
+ 40940 strings out of 495028
+ 863421 string characters out of 6181497
+ 1137857 words of memory out of 5000000
+ 43208 multiletter control sequences out of 15000+600000
+ 55038 words of font info for 67 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 63i,8n,92p,10401b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/
-public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmr9.pfb>
-Output written on github_main_doc.pdf (3 pages, 155234 bytes).
+ 63i,11n,92p,10401b,647s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/u
+sr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/publi
+c/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb>
+Output written on github_main_doc.pdf (4 pages, 211985 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
