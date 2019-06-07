@@ -4,7 +4,8 @@ if __name__=="__main__":
 
     from hi_im_codes.hi_im_pipeline import Sky_Maps
     
-    """
+    """ 
+    #Uncomment to use the appropriate module
     from Cosmological_Constraints.v2_fisher_matrix_for_10_parameters import Cosmological_Parameters
     Cosmological_Parameters()
 
