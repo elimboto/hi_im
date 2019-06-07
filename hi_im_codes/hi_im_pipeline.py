@@ -9,7 +9,6 @@ import pylab
 import matplotlib as mpl
 mpl.rcParams['axes.formatter.useoffset'] = False
 
-
 class Sky_Maps(object):
     
     def __init__(self, maps, freq_channels, cl_length, pol, counter, nside, theta_min, theta_max, name):
